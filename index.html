@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Juan Oros — Páginas web y tiendas en línea</title>
+<meta name="description" content="Juan Oros, ingeniero de sistemas y desarrollador full stack. Diseño páginas web, tiendas en línea y tableros de datos para negocios e instituciones en Colombia. Cotización gratis por WhatsApp.">
+<meta name="theme-color" content="#070809">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Juan Oros — Páginas web y tiendas en línea">
+<meta property="og:description" content="Páginas web, tiendas en línea y tableros de datos para negocios e instituciones. Cotización gratis por WhatsApp.">
+<meta property="og:image" content="images/ferrenewlink-preview.png">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+
+  :root { --acc: #8B5CF6; --ink: #E8EAE3; --bg: #070809; --panel: #0D0F11; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #070809; }
+  body { font-family: 'Space Grotesk', Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--acc); text-decoration: none; }
+  a:hover { color: #E8EAE3; }
+  @keyframes rail { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  @keyframes pulseDot { 0%, 100% { box-shadow: 0 0 0 0 var(--acc); opacity: 1; } 50% { box-shadow: 0 0 0 7px rgba(139,92,246,0); opacity: .75; } }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes sweep { 0% { transform: translateY(-100%); } 100% { transform: translateY(1400%); } }
+  @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  @keyframes gridDrift { from { background-position: 0 0; } to { background-position: 26px 26px; } }
+  [data-reveal] { transition: opacity .75s cubic-bezier(.22,.9,.3,1), transform .75s cubic-bezier(.22,.9,.3,1); }
+  [data-reveal].pre { opacity: 0; transform: translateY(24px); }
+  [data-reveal].in { opacity: 1; transform: none; }
+  .card { transition: border-color .35s ease, transform .35s cubic-bezier(.22,.9,.3,1), background .35s ease; }
+  .card:hover { border-color: var(--acc) !important; transform: translateY(-4px); }
+  .navlink { position: relative; }
+  .navlink::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 100%; height: 1px; background: var(--acc); transform: scaleX(0); transform-origin: right; transition: transform .35s cubic-bezier(.22,.9,.3,1); }
+  .navlink:hover::after { transform: scaleX(1); transform-origin: left; }
+  .bar { transform-origin: left; animation: grow 1.4s cubic-bezier(.22,.9,.3,1) both; }
+  .cta { transition: transform .3s cubic-bezier(.22,.9,.3,1), box-shadow .3s ease; }
+  .cta:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(139,92,246,.28); }
+  @keyframes dockIn { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
+  .dockitem { position: relative; display: grid; place-items: center; padding: 10px; border-radius: 50%; transition: background .4s ease, transform .4s cubic-bezier(.22,.9,.3,1); }
+  .dockitem:hover { background: rgba(232,234,227,.12); transform: translateY(-4px); }
+  .dockitem svg path { fill: #E8EAE3; transition: fill .35s ease; }
+  .dockitem:hover svg path { fill: var(--acc); }
+  .docktip { position: absolute; top: 100%; left: 50%; margin-top: 10px; white-space: nowrap; padding: 5px 10px; border-radius: 8px; background: #0D0F11; border: 1px solid rgba(232,234,227,.2); color: #E8EAE3; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; pointer-events: none; opacity: 0; transform: translateX(-50%) scale(.5); transition: opacity .4s ease, transform .4s cubic-bezier(.22,.9,.3,1), margin-top .4s ease; }
+  .dockitem:hover .docktip { opacity: 1; transform: translateX(-50%) scale(1); margin-top: 16px; }
+  .soc { position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; border-radius: 50%; color: #4d4d4d; background: #fff; transition: color .3s ease-in-out, box-shadow .3s ease-in-out; }
+  .soc:hover { color: #fff; box-shadow: 0 2px 45px rgba(0,0,0,.35); }
+  .soc svg { position: relative; z-index: 1; width: 24px; height: 24px; }
+  .soc .filled { position: absolute; left: 0; bottom: 0; width: 100%; height: 0; transition: height .3s ease-in-out; }
+  .soc:hover .filled { height: 100%; }
+  .soc-item { position: relative; display: grid; place-items: center; }
+  .soc-tip { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 4px; padding: 5px 10px; border-radius: 6px; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 11px; white-space: nowrap; opacity: 0; visibility: hidden; transition: all .3s ease; }
+  .soc-item:hover .soc-tip { opacity: 1; visibility: visible; margin-bottom: 14px; }
+  .soc-linkedin .filled, .soc-linkedin ~ .soc-tip { background: #0274b3; }
+  .soc-github .filled, .soc-github ~ .soc-tip { background: #24262a; }
+  .soc-instagram .filled, .soc-instagram ~ .soc-tip { background: linear-gradient(45deg,#405de6,#5b51db,#b33ab4,#c135b4,#e1306c,#fd1f1f); }
+  .soc-mail .filled, .soc-mail ~ .soc-tip { background: #0b7a4b; }
+  .lb { position: relative; height: 190px; width: 112px; display: flex; align-items: flex-end; justify-content: center; text-decoration: none; }
+  .lb-light { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 190px; width: 112px; display: flex; justify-content: center; pointer-events: none; }
+  .lb-dot { position: absolute; top: 0; width: 9px; height: 9px; border-radius: 50%; background: #16191B; z-index: 2; transition: background .3s ease, box-shadow .3s ease; }
+  .lb-beam { position: absolute; top: 0; width: 190px; height: 190px; clip-path: polygon(50% 0%, 22% 100%, 78% 100%); background: transparent; transition: background .3s ease; }
+  .lb-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 104px; width: 104px; background: #0A0C0D; border-radius: 8px; color: #2A2E31; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; outline: 2px solid #191D20; outline-offset: 2px; transition: 300ms; }
+  .lb-box svg { height: 34px; width: 34px; fill: #2A2E31; transition: 300ms; }
+  .lb:hover .lb-box { color: var(--acc); outline-color: var(--acc); }
+  .lb:hover .lb-box svg { fill: var(--acc); }
+  .lb:hover .lb-dot { background: var(--acc); box-shadow: 0 0 12px var(--acc); }
+  .lb:hover .lb-beam { background: linear-gradient(180deg, var(--acc) 0%, rgba(255,255,255,0) 72%); opacity: .55; }
+  .banner { border: none; position: relative; display: block; width: 260px; height: 90px; padding: 0; z-index: 2; cursor: pointer; background-color: var(--acc); text-decoration: none; transform: translateY(8px); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='868' width='2500' viewBox='0 0 726 252.17'%3E%3Cpath d='M483.92 0S481.38 24.71 466 40.11c-11.74 11.74-24.09 12.66-40.26 15.07-9.42 1.41-29.7 3.77-34.81-.79-2.37-2.11-3-21-3.22-27.62-.21-6.92-1.36-16.52-2.82-18-.75 3.06-2.49 11.53-3.09 13.61S378.49 34.3 378 36a85.13 85.13 0 0 0-30.09 0c-.46-1.67-3.17-11.48-3.77-13.56s-2.34-10.55-3.09-13.61c-1.45 1.45-2.61 11.05-2.82 18-.21 6.67-.84 25.51-3.22 27.62-5.11 4.56-25.38 2.2-34.8.79-16.16-2.47-28.51-3.39-40.21-15.13C244.57 24.71 242 0 242 0H0s69.52 22.74 97.52 68.59c16.56 27.11 14.14 58.49 9.92 74.73C170 140 221.46 140 273 158.57c69.23 24.93 83.2 76.19 90 93.6 6.77-17.41 20.75-68.67 90-93.6 51.54-18.56 103-18.59 165.56-15.25-4.21-16.24-6.63-47.62 9.93-74.73C656.43 22.74 726 0 726 0z'/%3E%3C/svg%3E") no-repeat 50% 50%; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='868' width='2500' viewBox='0 0 726 252.17'%3E%3Cpath d='M483.92 0S481.38 24.71 466 40.11c-11.74 11.74-24.09 12.66-40.26 15.07-9.42 1.41-29.7 3.77-34.81-.79-2.37-2.11-3-21-3.22-27.62-.21-6.92-1.36-16.52-2.82-18-.75 3.06-2.49 11.53-3.09 13.61S378.49 34.3 378 36a85.13 85.13 0 0 0-30.09 0c-.46-1.67-3.17-11.48-3.77-13.56s-2.34-10.55-3.09-13.61c-1.45 1.45-2.61 11.05-2.82 18-.21 6.67-.84 25.51-3.22 27.62-5.11 4.56-25.38 2.2-34.8.79-16.16-2.47-28.51-3.39-40.21-15.13C244.57 24.71 242 0 242 0H0s69.52 22.74 97.52 68.59c16.56 27.11 14.14 58.49 9.92 74.73C170 140 221.46 140 273 158.57c69.23 24.93 83.2 76.19 90 93.6 6.77-17.41 20.75-68.67 90-93.6 51.54-18.56 103-18.59 165.56-15.25-4.21-16.24-6.63-47.62 9.93-74.73C656.43 22.74 726 0 726 0z'/%3E%3C/svg%3E") no-repeat 50% 50%; -webkit-mask-size: 100%; mask-size: 100%; }
+  .banner::before { content: ''; position: absolute; width: 0; height: 100%; background-color: #070809; left: 50%; top: 50%; transform: translate(-50%, -50%); transition: width 1s ease; }
+  .banner:hover::before { width: 100%; }
+  .banner::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; box-shadow: 0 0 0 0 var(--acc); transition: box-shadow 2s ease; }
+  .banner:hover::after { box-shadow: 0 -13px 56px 12px var(--acc); }
+  .banner span { position: absolute; width: 100%; left: 50%; top: 42%; transform: translate(-50%,-50%); text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #070809; transition: color 1s ease; }
+  .banner:hover span { color: var(--acc); }
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 80px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+</style>
+</head>
+<body>
+<div style="background:#070809; color:#E8EAE3; overflow-x:clip; width:100%; background-image:radial-gradient(rgba(232,234,227,.07) 1px, transparent 1px); background-size:26px 26px; animation:gridDrift 9s linear infinite">
+
+  <header style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:10px clamp(12px,3vw,24px); padding:16px clamp(14px,3.5vw,48px); position:sticky; top:0; z-index:60; background:rgba(7,8,9,.86); backdrop-filter:blur(12px); border-bottom:1px solid rgba(232,234,227,.1)">
+
+
+
+  <nav aria-label="Navegación rápida" style="order:2; flex:0 0 auto; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:clamp(2px,.8vw,10px); padding:4px clamp(6px,1vw,12px); background:rgba(13,15,17,.9); border:1px solid rgba(232,234,227,.28); border-radius:14px; animation:dockIn .8s cubic-bezier(.22,.9,.3,1) .3s both">
+    <a href="#top" class="dockitem" aria-label="Inicio">
+      <svg width="18" height="18" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M27.9167 30H20.4167C19.2658 30 18.3333 29.1392 18.3333 28.0769V21.1538C18.3333 20.3038 17.5875 19.6154 16.6667 19.6154H13.3333C12.4125 19.6154 11.6667 20.3038 11.6667 21.1538V28.0769C11.6667 29.1392 10.7342 30 9.58333 30H2.08333C0.9325 30 0 29.1392 0 28.0769V13.3946C0 11.6262 0.878334 9.95539 2.3825 8.86154L14.2258 0.246923C14.68 -0.0823077 15.32 -0.0823077 15.7733 0.246923L27.6183 8.86154C29.1225 9.95539 30 11.6254 30 13.3931V28.0769C30 29.1392 29.0675 30 27.9167 30Z"></path></svg>
+      <span class="docktip">Inicio</span>
+    </a>
+    <a href="#servicios" class="dockitem" aria-label="Servicios">
+      <svg width="18" height="18" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 2H27C28.657 2 30 3.343 30 5V20C30 21.657 28.657 23 27 23H18L19 26H22V28H8V26H11L12 23H3C1.343 23 0 21.657 0 20V5C0 3.343 1.343 2 3 2ZM3 5V18H27V5H3Z"></path></svg>
+      <span class="docktip">Servicios</span>
+    </a>
+    <a href="#sobre" class="dockitem" aria-label="Perfil">
+      <svg width="18" height="18" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.0013 0C10.482 0 6.81914 3.50348 6.81914 7.82609V9.13044C6.81914 13.453 10.482 16.9565 15.0013 16.9565C19.5206 16.9565 23.1835 13.453 23.1835 9.13044V7.82609C23.1835 3.50348 19.5206 0 15.0013 0ZM14.9987 20.8696C9.53569 20.8696 2.52628 23.6959 0.509366 26.2041C-0.737054 27.755 0.44947 30 2.49366 30H27.5063C29.5505 30 30.7371 27.755 29.4906 26.2041C27.4737 23.6972 20.4616 20.8696 14.9987 20.8696Z"></path></svg>
+      <span class="docktip">Perfil</span>
+    </a>
+    <a href="#stack" class="dockitem" aria-label="Stack">
+      <svg width="18" height="18" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11 13C14.314 13 17 15.686 17 19C17 22.314 14.314 25 11 25C7.686 25 5 22.314 5 19C5 15.686 7.686 13 11 13ZM11 17C9.895 17 9 17.895 9 19C9 20.105 9.895 21 11 21C12.105 21 13 20.105 13 19C13 17.895 12.105 17 11 17ZM10.6641 8C10.4231 8 10.2178 8.17025 10.1738 8.40625L9.98828 9.39453C9.91128 9.80553 9.58383 10.1084 9.17383 10.1914C8.83283 10.2604 8.49788 10.3481 8.17188 10.4551C7.77588 10.5851 7.34131 10.4879 7.07031 10.1719L6.41992 9.41211C6.26292 9.23011 5.99706 9.18664 5.78906 9.30664L5.21094 9.64062C5.00194 9.76062 4.90828 10.0132 4.98828 10.2402L5.32422 11.1914C5.46222 11.5854 5.33053 12.0091 5.01953 12.2871C4.76253 12.5171 4.51806 12.7606 4.28906 13.0176C4.01106 13.3286 3.58736 13.4603 3.19336 13.3223L2.24023 12.9883C2.01323 12.9083 1.76258 13.0029 1.64258 13.2109L1.30664 13.7891C1.18564 13.9981 1.23106 14.2629 1.41406 14.4199L2.17383 15.0703C2.48983 15.3413 2.58703 15.7759 2.45703 16.1719C2.35003 16.4979 2.26236 16.8328 2.19336 17.1738C2.11036 17.5838 1.80748 17.9113 1.39648 17.9883L0.408203 18.1738C0.171203 18.2178 0 18.4231 0 18.6641V19.3359C0 19.5769 0.17025 19.7822 0.40625 19.8262L1.39453 20.0117C1.80553 20.0887 2.10841 20.4162 2.19141 20.8262C2.26041 21.1682 2.34808 21.5021 2.45508 21.8281C2.58508 22.2241 2.48788 22.6587 2.17188 22.9297L1.41211 23.5801C1.23011 23.7371 1.18664 24.0029 1.30664 24.2109L1.64062 24.7891C1.76062 24.9981 2.01323 25.0917 2.24023 25.0117L3.19141 24.6758C3.58541 24.5378 4.00911 24.6695 4.28711 24.9805C4.51711 25.2375 4.76058 25.4819 5.01758 25.7109C5.32858 25.9889 5.46027 26.4126 5.32227 26.8066L4.98828 27.7598C4.90828 27.9868 5.00294 28.2374 5.21094 28.3574L5.78906 28.6934C5.99806 28.8144 6.26292 28.7689 6.41992 28.5859L7.07031 27.8262C7.34131 27.5102 7.77588 27.413 8.17188 27.543C8.49788 27.65 8.83283 27.7376 9.17383 27.8066C9.58383 27.8896 9.91128 28.1925 9.98828 28.6035L10.1738 29.5918C10.2178 29.8288 10.4231 30 10.6641 30H11.3359C11.5769 30 11.7822 29.8287 11.8242 29.5938L12.0098 28.6055C12.0868 28.1945 12.4142 27.8916 12.8242 27.8086C13.1662 27.7396 13.5002 27.6519 13.8262 27.5449C14.2222 27.4149 14.6567 27.5121 14.9277 27.8281L15.5781 28.5879C15.7351 28.7699 15.999 28.8153 16.207 28.6953L16.7871 28.3594C16.9961 28.2394 17.0898 27.9887 17.0098 27.7617L16.6758 26.8086C16.5378 26.4146 16.6695 25.9909 16.9805 25.7129C17.2375 25.4829 17.4819 25.2394 17.7109 24.9824C17.9889 24.6714 18.4136 24.5397 18.8066 24.6777L19.7598 25.0117C19.9868 25.0917 20.2374 24.9971 20.3574 24.7891L20.6934 24.2109C20.8144 24.0019 20.7689 23.7371 20.5859 23.5801L19.8262 22.9297C19.5102 22.6587 19.413 22.2241 19.543 21.8281C19.65 21.5021 19.7376 21.1672 19.8066 20.8262C19.8896 20.4162 20.1925 20.0887 20.6035 20.0117L21.5918 19.8262C21.8288 19.7822 22 19.5769 22 19.3359V18.6641C22 18.4231 21.8287 18.2188 21.5938 18.1758L20.6055 17.9902C20.1945 17.9132 19.8916 17.5838 19.8086 17.1738C19.7396 16.8328 19.6519 16.4979 19.5449 16.1719C19.4149 15.7759 19.5121 15.3433 19.8281 15.0723L20.5879 14.4219C20.7699 14.2649 20.8153 13.999 20.6953 13.791L20.3594 13.2109C20.2394 13.0019 19.9887 12.9083 19.7617 12.9883L18.8086 13.3242C18.4146 13.4622 17.9909 13.3305 17.7129 13.0195C17.4829 12.7625 17.2394 12.5181 16.9824 12.2891C16.6714 12.0111 16.5397 11.5874 16.6777 11.1934L17.0117 10.2402C17.0917 10.0132 16.9971 9.76258 16.7891 9.64258L16.2109 9.30664C16.0019 9.18564 15.7371 9.23106 15.5801 9.41406L14.9297 10.1738C14.6587 10.4898 14.2241 10.587 13.8281 10.457C13.5021 10.35 13.1672 10.2624 12.8262 10.1934C12.4162 10.1104 12.0887 9.80748 12.0117 9.39648L11.8262 8.4082C11.7822 8.1712 11.5769 8 11.3359 8H10.6641Z"></path></svg>
+      <span class="docktip">Stack</span>
+    </a>
+    <a href="#proyectos" class="dockitem" aria-label="Proyectos">
+      <svg width="18" height="18" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.6923 0C10.1547 0 8.07692 2.16563 8.07692 4.8V6H10.3846V4.8C10.3846 3.45938 11.4032 2.4 12.6923 2.4H17.3077C18.5968 2.4 19.6154 3.45938 19.6154 4.8V6H21.9231V4.8C21.9231 2.16563 19.8453 0 17.3077 0H12.6923ZM5.625 7.2C2.51953 7.2 0 9.82031 0 13.05V24.15C0 27.3797 2.51953 30 5.625 30H24.375C27.4805 30 30 27.3797 30 24.15V13.05C30 9.82031 27.4805 7.2 24.375 7.2H5.625ZM15 15.4875C16.3386 15.4875 17.4159 16.6078 17.4159 18C17.4159 19.3922 16.3386 20.5125 15 20.5125C13.6614 20.5125 12.5841 19.3922 12.5841 18C12.5841 16.6078 13.6614 15.4875 15 15.4875Z"></path></svg>
+      <span class="docktip">Proyectos</span>
+    </a>
+    <a href="#experiencia" class="dockitem" aria-label="Trayectoria">
+      <svg width="18" height="18" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 0C2.895 0 2 0.895 2 2V28C2 29.105 2.895 30 4 30H26C27.105 30 28 29.105 28 28V9L19 0H4ZM18 2.5L25.5 10H18V2.5ZM7 14H23V16.5H7V14ZM7 19H23V21.5H7V19ZM7 24H17V26.5H7V24Z"></path></svg>
+      <span class="docktip">Trayectoria</span>
+    </a>
+    <a href="#contacto" class="dockitem" aria-label="Contacto">
+      <svg width="18" height="18" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22.4672 19.4199C21.9377 19.1095 21.2868 19.116 20.7598 19.4291L18.0912 21.0191C17.4938 21.3751 16.7477 21.3334 16.1999 20.9056C15.2529 20.166 13.7282 18.9217 12.4016 17.5952C11.0751 16.2687 9.8308 14.7439 9.09124 13.7969C8.66342 13.2491 8.62168 12.503 8.97776 11.9057L10.5677 9.23697C10.8821 8.71002 10.8847 8.05394 10.5743 7.52438L6.65865 0.835732C6.27909 0.188781 5.52518 -0.129478 4.79606 0.0492166C4.0878 0.221389 3.16825 0.641386 2.20434 1.6066C-0.813896 4.62483 -2.41693 9.71567 8.93342 21.066C20.2838 32.4164 25.3733 30.8146 28.3928 27.7951C29.3593 26.8286 29.778 25.9077 29.9515 25.1982C30.1276 24.4703 29.8145 23.7216 29.1689 23.3434C27.5567 22.4004 24.0794 20.3643 22.4672 19.4199Z"></path></svg>
+      <span class="docktip">Contacto</span>
+    </a>
+  </nav>
+  </header>
+
+  <section id="top" style="position:relative; min-height:calc(100vh - 58px); display:flex; flex-direction:column; justify-content:space-between; padding:clamp(22px,4vw,52px) clamp(14px,3.5vw,48px); overflow:hidden">
+    <div style="position:absolute; inset:0; pointer-events:none; overflow:hidden">
+      <div style="position:absolute; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent, var(--acc), transparent); opacity:.45; animation:sweep 7s linear infinite"></div>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.5)">
+      <span style="display:flex; align-items:center; gap:8px"><span style="width:6px; height:6px; border-radius:50%; background:var(--acc); animation:pulseDot 2s ease-in-out infinite"></span>Disponible para proyectos</span>
+      <span>Full stack · Next.js</span>
+    </div>
+
+    <div style="padding:clamp(26px,5vw,60px) 0; position:relative">
+      <p data-reveal="" style="font-family:'JetBrains Mono',monospace; font-size:clamp(11px,1.2vw,14px); letter-spacing:.24em; text-transform:uppercase; color:var(--acc); margin:0 0 clamp(10px,1.6vw,20px)">&gt; hola_mundo — soy<span style="animation:blink 1.1s step-end infinite">_</span></p>
+      <h1 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:-.045em; line-height:.84; font-size:clamp(3.2rem,14.5vw,13.5rem)">
+        <span data-reveal="" style="display:block">Juan</span>
+        <span data-reveal="" style="display:block; color:var(--acc); transition-delay:.12s">Oros</span>
+      </h1>
+      <p data-reveal="" style="margin:clamp(14px,2vw,22px) 0 0; font-family:'JetBrains Mono',monospace; font-size:clamp(11px,1.2vw,14px); letter-spacing:.2em; text-transform:uppercase; color:rgba(232,234,227,.55); transition-delay:.2s">Ingeniero de sistemas · Desarrollador full stack</p>
+      <p data-reveal="" style="margin:clamp(18px,2.4vw,28px) 0 0; max-width:40ch; font-weight:300; font-size:clamp(1.05rem,1.8vw,1.5rem); line-height:1.45; color:rgba(232,234,227,.85); text-wrap:pretty; transition-delay:.28s">Creo <span style="color:var(--acc); font-weight:500">páginas web y tiendas en línea</span> que hacen crecer tu negocio: rápidas, fáciles de administrar y listas para vender.</p>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:flex-start; gap:clamp(18px,4vw,44px)">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:12px">
+        <a href="https://wa.me/573108264892?text=Hola%20Juan%2C%20vi%20tu%20portafolio%20y%20quiero%20cotizar%20un%20proyecto" target="_blank" rel="noopener" class="cta" style="display:inline-flex; align-items:center; gap:10px; background:var(--acc); color:#070809; font-family:'JetBrains Mono',monospace; font-weight:500; text-transform:uppercase; letter-spacing:.14em; font-size:clamp(11px,1.1vw,13px); padding:clamp(13px,1.5vw,18px) clamp(22px,2.6vw,34px); border-radius:999px">Cotizar por WhatsApp</a>
+        <a href="#proyectos" class="cta" style="display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(232,234,227,.35); color:#E8EAE3; font-family:'JetBrains Mono',monospace; font-weight:500; text-transform:uppercase; letter-spacing:.14em; font-size:clamp(11px,1.1vw,13px); padding:clamp(13px,1.5vw,18px) clamp(22px,2.6vw,34px); border-radius:999px">Ver proyectos ↓</a>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px 22px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:rgba(232,234,227,.55)">
+        <span><span style="color:var(--acc)">✓</span> 2 sitios en producción</span>
+        <span><span style="color:var(--acc)">✓</span> Cotización gratis</span>
+        <span><span style="color:var(--acc)">✓</span> Respuesta en 24 h</span>
+      </div>
+    </div>
+  </section>
+
+  <div style="border-top:1px solid rgba(232,234,227,.12); border-bottom:1px solid rgba(232,234,227,.12); overflow:hidden; padding:clamp(12px,1.6vw,18px) 0; background:rgba(13,15,17,.6)">
+    <div style="display:flex; width:max-content; animation:rail 34s linear infinite">
+      <div style="display:flex; gap:clamp(20px,3.4vw,46px); padding-right:clamp(20px,3.4vw,46px); align-items:center; font-family:'JetBrains Mono',monospace; font-weight:400; text-transform:uppercase; letter-spacing:.08em; font-size:clamp(.95rem,2.4vw,1.9rem); white-space:nowrap">
+        <span>Next.js</span><span style="color:var(--acc)">//</span><span>React</span><span style="color:var(--acc)">//</span><span>Angular</span><span style="color:var(--acc)">//</span><span>TypeScript</span><span style="color:var(--acc)">//</span><span>MySQL</span><span style="color:var(--acc)">//</span><span>Java</span><span style="color:var(--acc)">//</span><span>Power BI</span><span style="color:var(--acc)">//</span><span>SharePoint</span><span style="color:var(--acc)">//</span>
+      </div>
+      <div style="display:flex; gap:clamp(20px,3.4vw,46px); padding-right:clamp(20px,3.4vw,46px); align-items:center; font-family:'JetBrains Mono',monospace; font-weight:400; text-transform:uppercase; letter-spacing:.08em; font-size:clamp(.95rem,2.4vw,1.9rem); white-space:nowrap" aria-hidden="true">
+        <span>Next.js</span><span style="color:var(--acc)">//</span><span>React</span><span style="color:var(--acc)">//</span><span>Angular</span><span style="color:var(--acc)">//</span><span>TypeScript</span><span style="color:var(--acc)">//</span><span>MySQL</span><span style="color:var(--acc)">//</span><span>Java</span><span style="color:var(--acc)">//</span><span>Power BI</span><span style="color:var(--acc)">//</span><span>SharePoint</span><span style="color:var(--acc)">//</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="servicios" style="padding:clamp(54px,8vw,120px) clamp(14px,3.5vw,48px)">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:clamp(26px,4vw,52px)">
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--acc); border:1px solid var(--acc); border-radius:999px; padding:5px 12px">[01]</span>
+        <h2 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:-.02em; font-size:clamp(1.5rem,4vw,2.6rem)">¿Qué puedo hacer por ti?</h2>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.42)">Servicios para negocios e instituciones</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:clamp(14px,2vw,22px)">
+      <div data-reveal="" class="card" style="display:flex; flex-direction:column; border:1px solid rgba(139,92,246,.4); border-radius:22px; background:linear-gradient(180deg, rgba(139,92,246,.08), var(--panel) 60%); padding:clamp(20px,2.6vw,32px)">
+        <p style="margin:0 0 14px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--acc)">// Más solicitado</p>
+        <h3 style="margin:0 0 10px; font-weight:700; font-size:clamp(1.2rem,2vw,1.5rem)">Tienda en línea</h3>
+        <p style="margin:0 0 18px; font-weight:300; font-size:1rem; line-height:1.6; color:rgba(232,234,227,.75); text-wrap:pretty">Vende tus productos 24/7 con catálogo, carrito, pedidos y un panel para que tú mismo actualices precios e inventario.</p>
+        <ul style="margin:0 0 20px; padding:0; list-style:none; display:grid; gap:8px; flex:1">
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Importo tu inventario actual (Excel o POS)</li>
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Pedidos directo a tu WhatsApp o correo</li>
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Dominio propio y hosting configurados</li>
+        </ul>
+        <a href="https://wa.me/573108264892?text=Hola%20Juan%2C%20quiero%20cotizar%20una%20tienda%20en%20l%C3%ADnea" target="_blank" rel="noopener" class="cta" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; background:var(--acc); color:#070809; font-family:'JetBrains Mono',monospace; font-weight:500; text-transform:uppercase; letter-spacing:.12em; font-size:11px; padding:12px 20px; border-radius:999px">Cotizar tienda →</a>
+      </div>
+      <div data-reveal="" class="card" style="display:flex; flex-direction:column; border:1px solid rgba(232,234,227,.14); border-radius:22px; background:var(--panel); padding:clamp(20px,2.6vw,32px); transition-delay:.06s">
+        <p style="margin:0 0 14px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.5)">// Presencia profesional</p>
+        <h3 style="margin:0 0 10px; font-weight:700; font-size:clamp(1.2rem,2vw,1.5rem)">Página web corporativa o institucional</h3>
+        <p style="margin:0 0 18px; font-weight:300; font-size:1rem; line-height:1.6; color:rgba(232,234,227,.75); text-wrap:pretty">Un sitio rápido y confiable para tu empresa, colegio o negocio, que aparezca en Google y convierta visitas en contactos.</p>
+        <ul style="margin:0 0 20px; padding:0; list-style:none; display:grid; gap:8px; flex:1">
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Diseño a la medida, adaptado a celular</li>
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Panel para editar noticias y contenido sin saber código</li>
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Botón de WhatsApp, mapa y formulario de contacto</li>
+        </ul>
+        <a href="https://wa.me/573108264892?text=Hola%20Juan%2C%20quiero%20cotizar%20una%20p%C3%A1gina%20web" target="_blank" rel="noopener" class="cta" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(232,234,227,.4); color:#E8EAE3; font-family:'JetBrains Mono',monospace; font-weight:500; text-transform:uppercase; letter-spacing:.12em; font-size:11px; padding:12px 20px; border-radius:999px">Cotizar página →</a>
+      </div>
+      <div data-reveal="" class="card" style="display:flex; flex-direction:column; border:1px solid rgba(232,234,227,.14); border-radius:22px; background:var(--panel); padding:clamp(20px,2.6vw,32px); transition-delay:.12s">
+        <p style="margin:0 0 14px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.5)">// Datos &amp; automatización</p>
+        <h3 style="margin:0 0 10px; font-weight:700; font-size:clamp(1.2rem,2vw,1.5rem)">Tableros y sistemas a medida</h3>
+        <p style="margin:0 0 18px; font-weight:300; font-size:1rem; line-height:1.6; color:rgba(232,234,227,.75); text-wrap:pretty">Deja de perder horas en Excel: tableros en Power BI, bases de datos y flujos automáticos para ver tu negocio en tiempo real.</p>
+        <ul style="margin:0 0 20px; padding:0; list-style:none; display:grid; gap:8px; flex:1">
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Reportes de ventas, inventario y gastos</li>
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Automatización con SharePoint y Power Automate</li>
+          <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.5; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">✓</span>Capacitación para tu equipo</li>
+        </ul>
+        <a href="https://wa.me/573108264892?text=Hola%20Juan%2C%20quiero%20cotizar%20un%20tablero%20o%20sistema" target="_blank" rel="noopener" class="cta" style="align-self:flex-start; display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(232,234,227,.4); color:#E8EAE3; font-family:'JetBrains Mono',monospace; font-weight:500; text-transform:uppercase; letter-spacing:.12em; font-size:11px; padding:12px 20px; border-radius:999px">Cotizar sistema →</a>
+      </div>
+    </div>
+
+    <p style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--acc); margin:clamp(40px,5vw,64px) 0 16px">// así trabajamos juntos</p>
+    <div data-reveal="" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px">
+      <div style="border-top:1px solid var(--acc); padding:16px 4px 0">
+        <p style="margin:0 0 8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">01</p>
+        <p style="margin:0 0 6px; font-weight:600; font-size:1.05rem">Conversamos</p>
+        <p style="margin:0; font-weight:300; font-size:.95rem; line-height:1.55; color:rgba(232,234,227,.68)">Me cuentas tu negocio y lo que necesitas. Sin costo y sin compromiso.</p>
+      </div>
+      <div style="border-top:1px solid rgba(232,234,227,.2); padding:16px 4px 0">
+        <p style="margin:0 0 8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">02</p>
+        <p style="margin:0 0 6px; font-weight:600; font-size:1.05rem">Propuesta clara</p>
+        <p style="margin:0; font-weight:300; font-size:.95rem; line-height:1.55; color:rgba(232,234,227,.68)">Recibes alcance, precio cerrado y fecha de entrega por escrito.</p>
+      </div>
+      <div style="border-top:1px solid rgba(232,234,227,.2); padding:16px 4px 0">
+        <p style="margin:0 0 8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">03</p>
+        <p style="margin:0 0 6px; font-weight:600; font-size:1.05rem">Construcción con avances</p>
+        <p style="margin:0; font-weight:300; font-size:.95rem; line-height:1.55; color:rgba(232,234,227,.68)">Ves el progreso en un enlace de prueba y pides ajustes en el camino.</p>
+      </div>
+      <div style="border-top:1px solid rgba(232,234,227,.2); padding:16px 4px 0">
+        <p style="margin:0 0 8px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">04</p>
+        <p style="margin:0 0 6px; font-weight:600; font-size:1.05rem">Lanzamiento y soporte</p>
+        <p style="margin:0; font-weight:300; font-size:.95rem; line-height:1.55; color:rgba(232,234,227,.68)">Publico tu sitio con tu dominio y te acompaño después de la entrega.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" style="padding:clamp(54px,8vw,120px) clamp(14px,3.5vw,48px); border-top:1px solid rgba(232,234,227,.1)">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:clamp(26px,4vw,52px)">
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--acc); border:1px solid var(--acc); border-radius:999px; padding:5px 12px">[02]</span>
+        <h2 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:-.02em; font-size:clamp(1.5rem,4vw,2.6rem)">Perfil profesional</h2>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.42)">Quién soy y cómo trabajo</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:clamp(16px,2.4vw,28px); align-items:start">
+      <div data-reveal="" class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:22px; background:var(--panel); padding:clamp(20px,2.6vw,34px)">
+        <p style="margin:0 0 18px; font-weight:300; font-size:clamp(1rem,1.4vw,1.25rem); line-height:1.6; color:rgba(232,234,227,.82); text-wrap:pretty">
+          Estudiante de Ingeniería de Sistemas en la Universidad de San Gil y desarrollador full stack. Acompaño a empresas e instituciones en todo el ciclo de su proyecto web: levantamiento de requerimientos, arquitectura de la información, desarrollo, pruebas, despliegue en producción y soporte posterior.
+        </p>
+        <p style="margin:0; font-weight:300; font-size:clamp(1rem,1.4vw,1.25rem); line-height:1.6; color:rgba(232,234,227,.82); text-wrap:pretty">
+          Antes de los proyectos freelance trabajé en soporte técnico y automatización de datos con Access, Power BI y SharePoint, así que entiendo la operación de un negocio y no solo su sitio web.
+        </p>
+      </div>
+
+      <div data-reveal="" style="display:flex; flex-direction:column; gap:14px; transition-delay:.1s">
+        <div class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:22px; background:#0A0C0D; overflow:hidden; animation:floatY 7s ease-in-out infinite">
+          <div style="display:flex; align-items:center; gap:8px; padding:11px 15px; border-bottom:1px solid rgba(232,234,227,.1)">
+            <span style="width:9px; height:9px; border-radius:50%; background:#FF5F57"></span>
+            <span style="width:9px; height:9px; border-radius:50%; background:#FEBC2E"></span>
+            <span style="width:9px; height:9px; border-radius:50%; background:#28C840"></span>
+            <span style="flex:1; text-align:center; font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(232,234,227,.4)">juan@oros: ~/perfil</span>
+          </div>
+          <div style="padding:clamp(16px,2.2vw,24px); font-family:'JetBrains Mono',monospace; font-size:12px; line-height:2; color:rgba(232,234,227,.78)">
+            <p style="margin:0"><span style="color:var(--acc)">$</span> whoami</p>
+            <p style="margin:0 0 12px; color:rgba(232,234,227,.55)">juan_oros · ingeniero_de_sistemas</p>
+            <p style="margin:0"><span style="color:var(--acc)">$</span> cat enfoque.txt</p>
+            <p style="margin:0 0 12px; color:rgba(232,234,227,.55)">de la maqueta al dominio en producción</p>
+            <p style="margin:0"><span style="color:var(--acc)">$</span> git log --oneline -3</p>
+            <p style="margin:0; color:rgba(232,234,227,.55)">a1f39c2 feat: checkout en tiempo real</p>
+            <p style="margin:0; color:rgba(232,234,227,.55)">7d0b418 perf: catálogo de 3.000 SKUs</p>
+            <p style="margin:0 0 12px; color:rgba(232,234,227,.55)">3c8e50d feat: panel editable para el cliente</p>
+            <p style="margin:0"><span style="color:var(--acc)">$</span> status<span style="animation:blink 1.1s step-end infinite"> ▍</span></p>
+            <p style="margin:0; color:var(--acc)">disponible para nuevos proyectos</p>
+          </div>
+        </div>
+        <div class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:22px; background:var(--panel); padding:clamp(16px,2vw,24px); display:flex; flex-wrap:wrap; gap:8px">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; border:1px solid rgba(139,92,246,.35); color:var(--acc); border-radius:999px; padding:7px 13px">#FullStack</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; border:1px solid rgba(232,234,227,.2); border-radius:999px; padding:7px 13px">#DiseñoWeb</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; border:1px solid rgba(232,234,227,.2); border-radius:999px; padding:7px 13px">#BasesDeDatos</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.08em; border:1px solid rgba(232,234,227,.2); border-radius:999px; padding:7px 13px">#BI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack" style="padding:clamp(54px,8vw,120px) clamp(14px,3.5vw,48px); border-top:1px solid rgba(232,234,227,.1)">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:clamp(26px,4vw,52px)">
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--acc); border:1px solid var(--acc); border-radius:999px; padding:5px 12px">[03]</span>
+        <h2 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:-.02em; font-size:clamp(1.5rem,4vw,2.6rem)">Stack &amp; herramientas</h2>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.42)">Tecnologías de trabajo diario</span>
+    </div>
+
+    <p style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--acc); margin:0 0 14px">// front-end</p>
+    <div data-reveal="" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(148px,1fr)); gap:10px; margin-bottom:clamp(26px,3.4vw,40px)">
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/nextdotjs/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Next.js</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/react/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">React</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/angular/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Angular</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/typescript/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">TypeScript</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/javascript/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">JavaScript</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/tailwindcss/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Tailwind</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/html5/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">HTML</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/css/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">CSS</span>
+      </div>
+    </div>
+
+    <p style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--acc); margin:0 0 14px">// back-end &amp; datos</p>
+    <div data-reveal="" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(148px,1fr)); gap:10px; margin-bottom:clamp(26px,3.4vw,40px)">
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/mysql/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">MySQL</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/openjdk/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Java</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/cplusplus/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">C++</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/railway/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Railway</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <img src="https://cdn.simpleicons.org/git/E8EAE3" alt="" width="24" height="24" style="width:24px; height:24px; flex:none" />
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Git</span>
+      </div>
+    </div>
+
+    <p style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--acc); margin:0 0 14px">// microsoft 365 &amp; bi</p>
+    <div data-reveal="" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(148px,1fr)); gap:10px">
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <span style="width:24px; height:24px; flex:none; display:grid; place-items:center; border-radius:6px; background:var(--acc); color:#070809; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700">BI</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Power BI</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <span style="width:24px; height:24px; flex:none; display:grid; place-items:center; border-radius:6px; background:var(--acc); color:#070809; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700">SP</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">SharePoint</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <span style="width:24px; height:24px; flex:none; display:grid; place-items:center; border-radius:6px; background:var(--acc); color:#070809; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700">AC</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Access</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <span style="width:24px; height:24px; flex:none; display:grid; place-items:center; border-radius:6px; background:var(--acc); color:#070809; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700">XL</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Excel</span>
+      </div>
+      <div class="card" style="display:flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.13); border-radius:14px; padding:15px 17px; background:var(--panel)">
+        <span style="width:24px; height:24px; flex:none; display:grid; place-items:center; border-radius:6px; background:var(--acc); color:#070809; font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:700">PA</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px">Power Automate</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos" style="padding:clamp(54px,8vw,120px) clamp(14px,3.5vw,48px); border-top:1px solid rgba(232,234,227,.1)">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:clamp(26px,4vw,52px)">
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--acc); border:1px solid var(--acc); border-radius:999px; padding:5px 12px">[04]</span>
+        <h2 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:-.02em; font-size:clamp(1.5rem,4vw,2.6rem)">Proyectos destacados</h2>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.42)">2 plataformas en producción</span>
+    </div>
+
+    <article data-reveal="" class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:24px; background:var(--panel); overflow:hidden; margin-bottom:clamp(16px,2.4vw,26px)">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; padding:14px clamp(18px,2.4vw,30px); border-bottom:1px solid rgba(232,234,227,.1); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.5)">
+        <span style="display:flex; align-items:center; gap:9px; color:var(--acc)"><span style="width:6px; height:6px; border-radius:50%; background:var(--acc); animation:pulseDot 2.2s ease-in-out infinite"></span>01 // En producción</span>
+        <span>E-commerce &amp; gestión administrativa</span>
+        <span>Deploy: Railway · dominio propio</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:clamp(18px,2.6vw,34px); padding:clamp(20px,2.8vw,36px)">
+        <div>
+          <h3 style="margin:0 0 6px; font-weight:700; text-transform:uppercase; letter-spacing:-.01em; font-size:clamp(1.4rem,3vw,2.3rem)">Ferre NewLink</h3>
+          <p style="margin:0 0 18px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.06em; color:var(--acc)">ferrenewlink.com ↗</p>
+          <p style="margin:0 0 18px; font-weight:300; font-size:clamp(.95rem,1.3vw,1.12rem); line-height:1.6; color:rgba(232,234,227,.75); text-wrap:pretty">Tienda en línea y panel administrativo integral para una de las ferreterías líderes. Catálogo interactivo, carrito de compras, checkout fluido, gestión de pedidos en tiempo real y notificaciones automáticas por correo.</p>
+          <ul style="margin:0 0 20px; padding:0; list-style:none; display:grid; gap:10px">
+            <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">▸</span>Migración e importación de ~3.000 productos desde el sistema POS comercial.</li>
+            <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">▸</span>Transición de arquitectura de datos de SQLite local a PostgreSQL administrado.</li>
+            <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">▸</span>Auditoría de seguridad y despliegue en entorno de producción con dominio propio.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:22px">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">Next.js</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">TypeScript</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">PostgreSQL</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">Prisma</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">Tailwind CSS</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid var(--acc); color:var(--acc); border-radius:6px; padding:6px 11px">Railway</span>
+          </div>
+          <a href="https://ferrenewlink.com" target="_blank" rel="noopener" class="cta" style="display:inline-flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.4); color:#E8EAE3; border-radius:999px; padding:12px 22px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase">Visitar sitio en vivo <span style="color:var(--acc)">ferrenewlink.com ↗</span></a>
+        </div>
+        <div>
+          <div style="border:1px solid rgba(232,234,227,.14); border-radius:16px; overflow:hidden; background:#0A0C0D">
+            <div style="display:flex; align-items:center; gap:8px; padding:10px 14px; border-bottom:1px solid rgba(232,234,227,.1)">
+              <span style="width:9px; height:9px; border-radius:50%; background:#FF5F57"></span>
+              <span style="width:9px; height:9px; border-radius:50%; background:#FEBC2E"></span>
+              <span style="width:9px; height:9px; border-radius:50%; background:#28C840"></span>
+              <span style="flex:1; text-align:center; font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(232,234,227,.45)">https://ferrenewlink.com</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.1em; color:var(--acc)">HTTPS:OK</span>
+            </div>
+            <div style="aspect-ratio:16/10; background:#111315">
+              <img src="images/ferrenewlink-preview.png" alt="Inicio de ferrenewlink.com" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block" />
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px">
+            <div style="border:1px solid rgba(232,234,227,.12); border-radius:12px; padding:12px; text-align:center; background:#0A0C0D">
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,234,227,.45)">Catálogo</p>
+              <p style="margin:6px 0 0; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">+3.000 SKUs</p>
+            </div>
+            <div style="border:1px solid rgba(232,234,227,.12); border-radius:12px; padding:12px; text-align:center; background:#0A0C0D">
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,234,227,.45)">Datos</p>
+              <p style="margin:6px 0 0; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">SQLite→PG</p>
+            </div>
+            <div style="border:1px solid rgba(232,234,227,.12); border-radius:12px; padding:12px; text-align:center; background:#0A0C0D">
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,234,227,.45)">Checkout</p>
+              <p style="margin:6px 0 0; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">Tiempo real</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article data-reveal="" class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:24px; background:var(--panel); overflow:hidden; transition-delay:.08s">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; padding:14px clamp(18px,2.4vw,30px); border-bottom:1px solid rgba(232,234,227,.1); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.5)">
+        <span style="display:flex; align-items:center; gap:9px; color:var(--acc)"><span style="width:6px; height:6px; border-radius:50%; background:var(--acc); animation:pulseDot 2.2s ease-in-out infinite"></span>02 // En producción</span>
+        <span>Plataforma web institucional &amp; CMS</span>
+        <span>Sector educativo</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:clamp(18px,2.6vw,34px); padding:clamp(20px,2.8vw,36px)">
+        <div>
+          <h3 style="margin:0 0 6px; font-weight:700; text-transform:uppercase; letter-spacing:-.01em; font-size:clamp(1.4rem,3vw,2.3rem)">I.E. Lazarillo de Tormes</h3>
+          <p style="margin:0 0 18px; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.06em; color:var(--acc)">Portal institucional oficial ↗</p>
+          <p style="margin:0 0 18px; font-weight:300; font-size:clamp(.95rem,1.3vw,1.12rem); line-height:1.6; color:rgba(232,234,227,.75); text-wrap:pretty">Portal web oficial y ecosistema digital para la institución educativa: identidad y símbolos patrios, himno en video, galería de uniformes y un sistema dinámico de noticias para toda la comunidad académica.</p>
+          <ul style="margin:0 0 20px; padding:0; list-style:none; display:grid; gap:10px">
+            <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">▸</span>Panel de administración con autenticación para editar contenido sin tocar código.</li>
+            <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">▸</span>Diseño totalmente responsive para estudiantes, docentes y padres de familia.</li>
+            <li style="display:flex; gap:10px; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; color:rgba(232,234,227,.7)"><span style="color:var(--acc)">▸</span>Trámite del dominio .edu.co y despliegue con almacenamiento de multimedia.</li>
+          </ul>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:22px">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">Next.js</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">React</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">Prisma</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid rgba(232,234,227,.2); border-radius:6px; padding:6px 11px">PostgreSQL</span>
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.06em; border:1px solid var(--acc); color:var(--acc); border-radius:6px; padding:6px 11px">NextAuth</span>
+          </div>
+          <a href="https://lazarrillodetormes-production.up.railway.app" target="_blank" rel="noopener" class="cta" style="display:inline-flex; align-items:center; gap:12px; border:1px solid rgba(232,234,227,.4); color:#E8EAE3; border-radius:999px; padding:12px 22px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase">Ver portal web institucional <span style="color:var(--acc)">↗</span></a>
+        </div>
+        <div>
+          <div style="border:1px solid rgba(232,234,227,.14); border-radius:16px; overflow:hidden; background:#0A0C0D">
+            <div style="display:flex; align-items:center; gap:8px; padding:10px 14px; border-bottom:1px solid rgba(232,234,227,.1)">
+              <span style="width:9px; height:9px; border-radius:50%; background:#FF5F57"></span>
+              <span style="width:9px; height:9px; border-radius:50%; background:#FEBC2E"></span>
+              <span style="width:9px; height:9px; border-radius:50%; background:#28C840"></span>
+              <span style="flex:1; text-align:center; font-family:'JetBrains Mono',monospace; font-size:10px; color:rgba(232,234,227,.45)">portal-lazarillodetormes.edu.co</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.1em; color:var(--acc)">ONLINE</span>
+            </div>
+            <div style="aspect-ratio:16/10; background:#111315">
+              <img src="images/lazarillo-preview.png" alt="Portal institucional Lazarillo de Tormes" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block" />
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px">
+            <div style="border:1px solid rgba(232,234,227,.12); border-radius:12px; padding:12px; text-align:center; background:#0A0C0D">
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,234,227,.45)">Gestión</p>
+              <p style="margin:6px 0 0; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">CMS privado</p>
+            </div>
+            <div style="border:1px solid rgba(232,234,227,.12); border-radius:12px; padding:12px; text-align:center; background:#0A0C0D">
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,234,227,.45)">Acceso</p>
+              <p style="margin:6px 0 0; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">Auth segura</p>
+            </div>
+            <div style="border:1px solid rgba(232,234,227,.12); border-radius:12px; padding:12px; text-align:center; background:#0A0C0D">
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,234,227,.45)">Estado</p>
+              <p style="margin:6px 0 0; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--acc)">Publicado</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="experiencia" style="padding:clamp(54px,8vw,120px) clamp(14px,3.5vw,48px); border-top:1px solid rgba(232,234,227,.1)">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:clamp(26px,4vw,52px)">
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--acc); border:1px solid var(--acc); border-radius:999px; padding:5px 12px">[05]</span>
+        <h2 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:-.02em; font-size:clamp(1.5rem,4vw,2.6rem)">Experiencia &amp; trayectoria</h2>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.42)">Cronología profesional y académica</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(18px,2.6vw,30px); align-items:start">
+      <div style="position:relative; padding-left:30px; display:grid; gap:14px">
+        <div style="position:absolute; left:5px; top:10px; bottom:10px; width:1px; background:linear-gradient(180deg, var(--acc), rgba(232,234,227,.12))"></div>
+
+        <div data-reveal="" style="position:relative">
+          <span style="position:absolute; left:-30px; top:20px; width:11px; height:11px; border-radius:50%; background:var(--acc); animation:pulseDot 2.6s ease-in-out infinite"></span>
+          <div class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:18px; background:var(--panel); padding:clamp(18px,2.2vw,26px)">
+            <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; margin-bottom:14px">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.1em; color:var(--acc); border:1px solid rgba(139,92,246,.4); border-radius:999px; padding:5px 11px">2025 // En ejecución</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(232,234,227,.42)">Yopal, Casanare</span>
+            </div>
+            <h3 style="margin:0 0 4px; font-weight:700; font-size:clamp(1.05rem,2vw,1.35rem)">JASOFT S.A.S</h3>
+            <p style="margin:0 0 12px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.5)">Técnico de apoyo</p>
+            <p style="margin:0 0 16px; font-weight:300; font-size:clamp(.92rem,1.2vw,1.05rem); line-height:1.6; color:rgba(232,234,227,.72); text-wrap:pretty">Administración de bases de datos operativas en Microsoft Access, diseño de cuadros de mando y visualización ejecutiva en Power BI, y gestión de infraestructura colaborativa en SharePoint con flujos automáticos de datos.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:7px">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#PowerBI</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#SharePoint</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#MSAccess</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#Automatización</span>
+            </div>
+          </div>
+        </div>
+
+        <div data-reveal="" style="position:relative; transition-delay:.06s">
+          <span style="position:absolute; left:-30px; top:20px; width:11px; height:11px; border-radius:50%; background:#1A1D1F; border:1px solid rgba(232,234,227,.35)"></span>
+          <div class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:18px; background:var(--panel); padding:clamp(18px,2.2vw,26px)">
+            <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; margin-bottom:14px">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.1em; color:rgba(232,234,227,.7); border:1px solid rgba(232,234,227,.22); border-radius:999px; padding:5px 11px">2024</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(232,234,227,.42)">Yopal, Casanare</span>
+            </div>
+            <h3 style="margin:0 0 4px; font-weight:700; font-size:clamp(1.05rem,2vw,1.35rem)">NSolutions S.A.S</h3>
+            <p style="margin:0 0 12px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.5)">Soporte informático</p>
+            <p style="margin:0 0 16px; font-weight:300; font-size:clamp(.92rem,1.2vw,1.05rem); line-height:1.6; color:rgba(232,234,227,.72); text-wrap:pretty">Resolución de incidencias críticas de hardware y software, mantenimiento correctivo de redes de área local, configuración de estaciones de trabajo y atención de soporte técnico de nivel 1 y 2.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:7px">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#Redes</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#Hardware</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#Infraestructura</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#SoporteL1-L2</span>
+            </div>
+          </div>
+        </div>
+
+        <div data-reveal="" style="position:relative; transition-delay:.12s">
+          <span style="position:absolute; left:-30px; top:20px; width:11px; height:11px; border-radius:50%; background:#1A1D1F; border:1px solid rgba(232,234,227,.35)"></span>
+          <div class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:18px; background:var(--panel); padding:clamp(18px,2.2vw,26px)">
+            <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; margin-bottom:14px">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.1em; color:var(--acc); border:1px solid rgba(139,92,246,.4); border-radius:999px; padding:5px 11px">2024 // Premio</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(232,234,227,.42)">Competencia técnica</span>
+            </div>
+            <h3 style="margin:0 0 4px; font-weight:700; font-size:clamp(1.05rem,2vw,1.35rem)">Swinglab</h3>
+            <p style="margin:0 0 12px; font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(232,234,227,.5)">Líder de proyecto · Simulador de física</p>
+            <p style="margin:0 0 16px; font-weight:300; font-size:clamp(.92rem,1.2vw,1.05rem); line-height:1.6; color:rgba(232,234,227,.72); text-wrap:pretty">Dirección técnica, formulación matemática y concepción de un simulador de física computacional; tercer puesto en el certamen entre las tres sedes, destacado por su precisión cinemática y su interfaz interactiva.</p>
+            <div style="display:flex; flex-wrap:wrap; gap:7px">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#Algoritmos</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#SimulaciónFísica</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:rgba(232,234,227,.6); border:1px solid rgba(232,234,227,.18); border-radius:6px; padding:5px 10px">#Liderazgo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; gap:14px">
+        <div data-reveal="" class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:18px; background:var(--panel); padding:clamp(18px,2.2vw,26px)">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; color:var(--acc); border:1px solid rgba(139,92,246,.4); border-radius:999px; padding:4px 10px">[EDU]</span>
+            <h3 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:.02em; font-size:clamp(1rem,1.7vw,1.2rem)">Formación</h3>
+          </div>
+          <div style="display:grid; gap:18px">
+            <div>
+              <p style="margin:0 0 5px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--acc)">2023 – actualidad (6.º semestre)</p>
+              <p style="margin:0 0 4px; font-weight:600; font-size:1rem">Ingeniería de Sistemas</p>
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.5; color:rgba(232,234,227,.6)">Universidad de San Gil (UNISANGIL) — Sede Yopal</p>
+            </div>
+            <div style="border-top:1px solid rgba(232,234,227,.12); padding-top:16px">
+              <p style="margin:0 0 5px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(232,234,227,.45)">Certificación profesional</p>
+              <p style="margin:0 0 4px; font-weight:600; font-size:1rem">Máster Full Stack Web Development</p>
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.5; color:rgba(232,234,227,.6)">Udemy — Angular, Node, Laravel, Symfony</p>
+            </div>
+            <div style="border-top:1px solid rgba(232,234,227,.12); padding-top:16px">
+              <p style="margin:0 0 5px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(232,234,227,.45)">Programa gubernamental</p>
+              <p style="margin:0 0 4px; font-weight:600; font-size:1rem">Bootcamp Talento Tech</p>
+              <p style="margin:0; font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.5; color:rgba(232,234,227,.6)">159 horas — Desarrollo web y tecnologías digitales</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-reveal="" class="card" style="border:1px solid rgba(232,234,227,.14); border-radius:18px; background:var(--panel); padding:clamp(18px,2.2vw,26px); transition-delay:.06s">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px">
+            <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; color:var(--acc); border:1px solid rgba(139,92,246,.4); border-radius:999px; padding:4px 10px">[LANG]</span>
+            <h3 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:.02em; font-size:clamp(1rem,1.7vw,1.2rem)">Idiomas</h3>
+          </div>
+          <div style="display:grid; gap:18px">
+            <div>
+              <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:9px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em">
+                <span>Español</span><span style="color:var(--acc); text-transform:uppercase">Nativo</span>
+              </div>
+              <div style="height:4px; border-radius:999px; background:rgba(232,234,227,.12); overflow:hidden">
+                <div class="bar" style="height:100%; width:100%; background:var(--acc)"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; gap:10px; margin-bottom:9px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em">
+                <span>Inglés</span><span style="color:rgba(232,234,227,.65); text-transform:uppercase">B1 profesional técnico</span>
+              </div>
+              <div style="height:4px; border-radius:999px; background:rgba(232,234,227,.12); overflow:hidden">
+                <div class="bar" style="height:100%; width:58%; background:var(--acc); animation-delay:.25s"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="padding:clamp(54px,8vw,120px) clamp(14px,3.5vw,48px) clamp(30px,4vw,48px); border-top:1px solid rgba(232,234,227,.1)">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-bottom:clamp(22px,3vw,40px)">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; color:var(--acc); border:1px solid var(--acc); border-radius:999px; padding:5px 12px">[06]</span>
+      <h2 style="margin:0; font-weight:700; text-transform:uppercase; letter-spacing:-.02em; font-size:clamp(1.5rem,4vw,2.6rem)">Contacto</h2>
+    </div>
+
+    <div class="card" style="border:1px solid rgba(139,92,246,.3); border-radius:26px; background:linear-gradient(180deg, rgba(139,92,246,.07), rgba(13,15,17,1) 55%); padding:clamp(28px,5vw,70px) clamp(20px,4vw,60px)">
+      <h3 data-reveal="" style="margin:0 0 clamp(16px,2.4vw,26px); font-weight:700; text-transform:uppercase; letter-spacing:-.035em; line-height:.9; font-size:clamp(2.1rem,8.5vw,6.5rem)">Construyamos<br /><span style="color:var(--acc)">tu próximo proyecto</span></h3>
+      <p data-reveal="" style="margin:0 0 clamp(26px,3.6vw,46px); max-width:52ch; font-weight:300; font-size:clamp(1rem,1.5vw,1.3rem); line-height:1.5; color:rgba(232,234,227,.78); text-wrap:pretty">Cuéntame qué necesitas —una tienda en línea, un portal institucional o un tablero de datos— y te respondo con una propuesta de alcance, tiempos y presupuesto.</p>
+      <div data-reveal="" style="display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(6px,2vw,26px)">
+        <a href="mailto:juanesvargas961@gmail.com" class="lb" aria-label="Correo">
+          <span class="lb-light"><span class="lb-dot"></span><span class="lb-beam"></span></span>
+          <span class="lb-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"></path></svg><span>Correo</span></span>
+        </a>
+        <a href="tel:+573108264892" class="lb" aria-label="Teléfono">
+          <span class="lb-light"><span class="lb-dot"></span><span class="lb-beam"></span></span>
+          <span class="lb-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58z"></path></svg><span>Teléfono</span></span>
+        </a>
+        <a href="https://github.com/JuanEstebanOros" target="_blank" rel="noopener" class="lb" aria-label="GitHub">
+          <span class="lb-light"><span class="lb-dot"></span><span class="lb-beam"></span></span>
+          <span class="lb-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"></path></svg><span>GitHub</span></span>
+        </a>
+        <a href="https://linkedin.com/in/juanoros01" target="_blank" rel="noopener" class="lb" aria-label="LinkedIn">
+          <span class="lb-light"><span class="lb-dot"></span><span class="lb-beam"></span></span>
+          <span class="lb-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"></path></svg><span>LinkedIn</span></span>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="lb" aria-label="Instagram">
+          <span class="lb-light"><span class="lb-dot"></span><span class="lb-beam"></span></span>
+          <span class="lb-box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-hidden="true"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"></path></svg><span>Instagram</span></span>
+        </a>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; margin-top:clamp(26px,3.4vw,44px); padding-top:20px; border-top:1px solid rgba(232,234,227,.12); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,234,227,.42)">
+      <span>Juan Esteban Oros Vargas</span>
+      <span>Diseñado y desarrollado por mí · © 2026</span>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  document.querySelectorAll('img[src*="simpleicons.org"]').forEach(function (img) {
+    var hide = function () { img.style.display = 'none'; };
+    img.addEventListener('error', hide);
+    if (img.complete && img.naturalWidth === 0) hide();
+  });
+
+  var revealAll = function () {
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+      el.classList.remove('pre');
+      el.classList.add('in');
+    });
+  };
+
+  var motionOff = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (motionOff || !window.IntersectionObserver || document.hidden) {
+    revealAll();
+    return;
+  }
+
+  var fired = false;
+  var io = new IntersectionObserver(function (entries) {
+    fired = true;
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('pre');
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+
+  window.addEventListener('beforeprint', revealAll);
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) revealAll();
+  });
+
+  var watchdog = setTimeout(function () {
+    if (!fired) revealAll();
+  }, 900);
+
+  var register = function () {
+    document.querySelectorAll('[data-reveal]:not(.in):not(.pre)').forEach(function (el) {
+      el.classList.add('pre');
+      io.observe(el);
+    });
+  };
+
+  requestAnimationFrame(function () {
+    register();
+    requestAnimationFrame(register);
+  });
+  setTimeout(register, 400);
+})();
+</script>
+</body>
+</html>
